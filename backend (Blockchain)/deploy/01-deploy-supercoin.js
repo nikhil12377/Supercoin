@@ -5,6 +5,8 @@ const fs = require("fs");
 
 const frontEndContractFiles = "../frontend/constants/networkMappings.json";
 const frontendABILocation = "../frontend/constants/";
+const backendABILocation = "../backend (Nodejs)/constants/";
+
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
@@ -56,7 +58,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
   try {
     console.log("Updating frontend...");
-    // await updateABI(supercoin);
+    await updateABI(supercoin);
     await updateContractAddresses(supercoin);
     console.log("Successful");
   } catch (error) {
@@ -65,12 +67,12 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 };
 
 async function updateABI(supercoin) {
-  const temp = JSON.stringify(supercoin.abi);
-  console.log(temp);
-
-  console.log(temp);
   fs.writeFileSync(
     `${frontendABILocation}Supercoin.json`,
+    JSON.stringify(supercoin.abi)
+  );
+  fs.writeFileSync(
+    `${backendABILocation}Supercoin.json`,
     JSON.stringify(supercoin.abi)
   );
 }

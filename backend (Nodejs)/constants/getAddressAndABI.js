@@ -1,4 +1,4 @@
-const ContractAddress = "0x24E865711679c7Aed7c6647CBfC736297ABBA001";
+const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const abi = [
   {
     inputs: [
@@ -24,7 +24,6 @@ const abi = [
   { inputs: [], name: "Invalid_Address", type: "error" },
   { inputs: [], name: "Invalid_Platform_Or_Brand", type: "error" },
   { inputs: [], name: "Not_Enough_ETH", type: "error" },
-  { inputs: [], name: "Token_Limit_Exceeded", type: "error" },
   {
     anonymous: false,
     inputs: [
@@ -92,63 +91,6 @@ const abi = [
       },
     ],
     name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "itemGotCanceled",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "itemGotDelivered",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "newItemBought",
     type: "event",
   },
   {
@@ -240,8 +182,15 @@ const abi = [
   {
     inputs: [],
     name: "buyTokens",
-    outputs: [],
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "checkPlatformOrBrand",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -267,27 +216,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "getBalance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "totalUserTokens",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "getJoiningAmount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getTokenLimit",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
@@ -311,27 +240,6 @@ const abi = [
   },
   {
     inputs: [
-      {
-        internalType: "address",
-        name: "_platformOrBrand",
-        type: "address",
-      },
-      { internalType: "uint256", name: "_tokenLimit", type: "uint256" },
-    ],
-    name: "increaseTokenLimit",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "intialSupply",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
       { internalType: "address", name: "_user", type: "address" },
       { internalType: "uint256", name: "_amount", type: "uint256" },
     ],
@@ -346,26 +254,6 @@ const abi = [
       { internalType: "uint256", name: "_amount", type: "uint256" },
     ],
     name: "itemBought",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "_user", type: "address" },
-      { internalType: "uint256", name: "_amount", type: "uint256" },
-    ],
-    name: "itemCanceled",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "_user", type: "address" },
-      { internalType: "uint256", name: "_amount", type: "uint256" },
-    ],
-    name: "itemDelivered",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -391,7 +279,6 @@ const abi = [
         name: "_platformOrBrand",
         type: "address",
       },
-      { internalType: "uint256", name: "_tokenLimit", type: "uint256" },
     ],
     name: "onboardAndAllocate",
     outputs: [],

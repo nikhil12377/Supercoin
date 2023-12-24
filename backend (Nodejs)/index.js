@@ -3,8 +3,6 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
 const itemBought = require("./routes/itemBought");
-const itemCanceled = require("./routes/itemCanceled");
-const itemDelivered = require("./routes/itemDelivered");
 const issueTokens = require("./routes/issueTokens");
 const allocateTokens = require("./routes/allocateTokens");
 const onboardAndAllocate = require("./routes/onboardAndAllocate");
@@ -34,8 +32,6 @@ app.get("/api/", async (req, res) => {
 });
 
 app.use("/api/itemBought", itemBought);
-app.use("/api/itemCanceled", itemCanceled);
-app.use("/api/itemDelivered", itemDelivered);
 app.use("/api/issueTokens", issueTokens);
 app.use("/api/allocateTokens", allocateTokens);
 app.use("/api/onboardAndAllocate", onboardAndAllocate);

@@ -23,7 +23,6 @@
   { "inputs": [], "name": "Invalid_Address", "type": "error" },
   { "inputs": [], "name": "Invalid_Platform_Or_Brand", "type": "error" },
   { "inputs": [], "name": "Not_Enough_ETH", "type": "error" },
-  { "inputs": [], "name": "Token_Limit_Exceeded", "type": "error" },
   {
     "anonymous": false,
     "inputs": [
@@ -109,63 +108,6 @@
         "type": "uint256"
       }
     ],
-    "name": "itemGotCanceled",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "itemGotDelivered",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "newItemBought",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
     "name": "newTokensIssued",
     "type": "event"
   },
@@ -196,12 +138,8 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_platformOrBrand",
-        "type": "address"
-      },
-      { "internalType": "address", "name": "_user", "type": "address" },
+      { "internalType": "address", "name": "_from", "type": "address" },
+      { "internalType": "address", "name": "_to", "type": "address" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" }
     ],
     "name": "allocateTokens",
@@ -241,8 +179,15 @@
   {
     "inputs": [],
     "name": "buyTokens",
-    "outputs": [],
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "checkPlatformOrBrand",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -268,27 +213,7 @@
   },
   {
     "inputs": [],
-    "name": "getBalance",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "totalUserTokens",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "getJoiningAmount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getTokenLimit",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
@@ -312,27 +237,6 @@
   },
   {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_platformOrBrand",
-        "type": "address"
-      },
-      { "internalType": "uint256", "name": "_tokenLimit", "type": "uint256" }
-    ],
-    "name": "increaseTokenLimit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "intialSupply",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
       { "internalType": "address", "name": "_user", "type": "address" },
       { "internalType": "uint256", "name": "_amount", "type": "uint256" }
     ],
@@ -347,26 +251,6 @@
       { "internalType": "uint256", "name": "_amount", "type": "uint256" }
     ],
     "name": "itemBought",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
-    "name": "itemCanceled",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
-    "name": "itemDelivered",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -391,8 +275,7 @@
         "internalType": "address",
         "name": "_platformOrBrand",
         "type": "address"
-      },
-      { "internalType": "uint256", "name": "_tokenLimit", "type": "uint256" }
+      }
     ],
     "name": "onboardAndAllocate",
     "outputs": [],

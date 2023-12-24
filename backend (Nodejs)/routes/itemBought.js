@@ -7,7 +7,9 @@ router.post("/", async (req, res) => {
   try {
     const { user, amount } = req.body;
     const Supercoin = getContract();
-    const tx = await Supercoin.itemBought(user, amount);
+    const tx = await Supercoin.itemBought(user, amount, {
+      gasLimit: 210000,
+    });
 
     await tx.wait();
 

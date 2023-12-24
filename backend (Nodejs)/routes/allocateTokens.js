@@ -5,10 +5,13 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { platformOrBrand, user, amount } = req.body;
+    const { from, to, amount } = req.body;
+    console.log(req.body);
 
     const Supercoin = getContract();
-    const tx = await Supercoin.allocateTokens(platformOrBrand, user, amount);
+    const tx = await Supercoin.allocateTokens(from, to, amount, {
+      gasLimit: 210000,
+    });
 
     await tx.wait();
 
