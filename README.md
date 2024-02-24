@@ -1,7 +1,7 @@
 ## Supercoin
 A blockchain based loyalty and reward program.
 
-Project Live at: [Supercoin](supercoin-frontend.vercel.app)
+Project Live at: [Supercoin](https://supercoin-frontend.vercel.app)
 
 ### Working
 
