@@ -99,19 +99,19 @@ export default function Seller() {
           <div className="my-4">
             {userAddresses.length > 0
               ? userAddresses.map((address, index) => (
-                  <div key={index} className="my-4 flex justify-between">
-                    <p className="pt-2">{truncateStr(address, 35)}</p>
-                    <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-1"
-                      onClick={() => {
-                        setUserAddress(address);
-                        setShowGiftModal(true);
-                      }}
-                    >
-                      Gift
-                    </button>
-                  </div>
-                ))
+                <div key={index} className="my-4 flex justify-between">
+                  <p className="pt-2">{truncateStr(address, 35)}</p>
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded m-1"
+                    onClick={() => {
+                      setUserAddress(address);
+                      setShowGiftModal(true);
+                    }}
+                  >
+                    Gift
+                  </button>
+                </div>
+              ))
               : ""}
           </div>
         </div>

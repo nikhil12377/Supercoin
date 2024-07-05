@@ -6,7 +6,7 @@ import apiCalls from "../API/apiCalls";
 
 const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-export default function PostToTwitterModal({ item, isVisible, setIsVisible }) {
+export default function PostToTwitterModal({ item, isVisible, handleClose }) {
   const { account } = useMoralis();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,10 +63,10 @@ export default function PostToTwitterModal({ item, isVisible, setIsVisible }) {
       }
       isVisible={isVisible}
       onCloseButtonPressed={() => {
-        setIsVisible(false);
+        handleClose(false);
       }}
       onOk={() => {
-        setIsVisible(false);
+        handleClose(false);
         handleSend();
         Router.push({
           pathname: "/twitter",
@@ -76,7 +76,7 @@ export default function PostToTwitterModal({ item, isVisible, setIsVisible }) {
         });
       }}
       onCancel={() => {
-        setIsVisible(false);
+        handleClose(false);
       }}
     >
       <div

@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import "bootstrap/dist/css/bootstrap.css";
-import "material-dashboard/assets/css/material-dashboard.css";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Election from './routes/Election';
-import Admin from './routes/Admin';
+// import Election from '../public/routes/Election';
+// import Admin from '../public/routes/Admin';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import { Sepolia } from "@thirdweb-dev/chains";
 
@@ -20,14 +19,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />
   },
-  {
-    path: "/election",
-    element: <Election />
-  },
-  {
-    path: "/admin",
-    element: <Admin />
-  }
+  // {
+  //   path: "/election",
+  //   element: <Election />
+  // },
+  // {
+  //   path: "/admin",
+  //   element: <Admin />
+  // }
 ]);
 
 root.render(

@@ -1,6 +1,5 @@
 import NFTBox from "./components/NFTBox";
 import { useEffect, useState } from "react";
-import { ethers } from "ethers";
 import { useChainId, useContract } from "@thirdweb-dev/react";
 import { CONTRACT_ADDRESS } from "./constants";
 
@@ -9,7 +8,7 @@ const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID;
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const chainId = useChainId();
   const [balance, setBalance] = useState(0);
@@ -17,15 +16,15 @@ export default function Home() {
   const { contract } = useContract(CONTRACT_ADDRESS);
   useEffect(() => {
     async function fetchProducts() {
-      try {
-        const response = await fetch(`${BACKEND_API}/api/products`);
-        const data = await response.json();
-        setProducts(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        setIsLoading(true);
-      }
+      // try {
+      //   const response = await fetch(`${BACKEND_API}/api/products`);
+      //   const data = await response.json();
+      //   setProducts(data);
+      //   setIsLoading(false);
+      // } catch (error) {
+      //   console.error("Error fetching products:", error);
+      //   setIsLoading(true);
+      // }
     }
 
     async function updateUI() {
@@ -44,6 +43,7 @@ export default function Home() {
 
     fetchProducts();
   }, []);
+
 
   return (
     <div className="container mx-auto">

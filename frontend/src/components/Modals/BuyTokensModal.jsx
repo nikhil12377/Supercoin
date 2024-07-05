@@ -1,8 +1,4 @@
-import { Input, Modal, useNotification } from "@web3uikit/core";
 import React, { useEffect, useState } from "react";
-import { useMoralis, useWeb3Contract } from "react-moralis";
-import Supercoin from "../../constants/Supercoin.json";
-import networkMappings from "../../constants/networkMappings.json";
 import { ethers } from "ethers";
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID;
